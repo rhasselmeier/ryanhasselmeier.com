@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ryan Hasselmeier — Montgomery, Texas</title>
+<meta name="description" content="Ryan Hasselmeier — advisor, builder, and Texas Notary Public based in Montgomery, Texas.">
+<style>
+  :root { --ink:#22303c; --slate:#6f8ba4; --paper:#fcfcfa; --line:#e3e6e8; }
+  * { box-sizing:border-box; margin:0; }
+  body { font-family:'Segoe UI', system-ui, sans-serif; background:var(--paper); color:var(--ink); line-height:1.7; }
+  .wrap { max-width:680px; margin:0 auto; padding:0 1.5rem; }
+  header { padding:5.5rem 0 3rem; text-align:center; }
+  .mono { font-family:Consolas, monospace; color:var(--slate); font-size:.85rem; letter-spacing:.18em; text-transform:uppercase; }
+  h1 { font-size:clamp(2rem,5vw,2.8rem); font-weight:650; letter-spacing:-.01em; margin:.6rem 0; }
+  .tagline { color:#4a5c6b; font-size:1.08rem; max-width:520px; margin:0 auto; }
+  .hr { width:48px; height:2px; background:var(--slate); margin:2.2rem auto; }
+  section { padding:1.2rem 0 2.4rem; }
+  h2 { font-size:.85rem; letter-spacing:.18em; text-transform:uppercase; color:var(--slate); text-align:center; margin-bottom:1.1rem; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:10px; padding:1.5rem 1.6rem; }
+  .card p { color:#4a5c6b; font-size:.97rem; }
+  .card p + p { margin-top:.7rem; }
+  .badge { display:inline-block; font-size:.75rem; letter-spacing:.1em; text-transform:uppercase; color:var(--slate); border:1px solid var(--line); border-radius:999px; padding:.25rem .8rem; margin-top:.9rem; }
+  form { display:grid; gap:.9rem; margin-top:1.2rem; }
+  label { font-size:.83rem; font-weight:600; }
+  input, select, textarea { width:100%; padding:.7rem; border:1px solid #cfd6db; border-radius:7px; background:#fff; font:inherit; font-size:.95rem; }
+  input:focus, select:focus, textarea:focus { outline:2px solid var(--slate); }
+  .fineprint { font-size:.78rem; color:#7c8b96; line-height:1.5; }
+  .fineprint a { color:var(--slate); }
+  button { background:var(--ink); color:#fff; font-weight:600; padding:.8rem 1.6rem; border:0; border-radius:7px; cursor:pointer; }
+  button:hover { background:#33475a; }
+  #form-status { font-size:.9rem; margin-top:.4rem; color:var(--slate); }
+  footer { border-top:1px solid var(--line); padding:1.8rem 0 2.4rem; text-align:center; font-size:.8rem; color:#8a97a1; }
+  footer a { color:var(--slate); }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="mono">Montgomery &middot; Texas</div>
+    <h1>Ryan Hasselmeier</h1>
+    <p class="tagline">Advisor and builder — accounting and tax by trade, systems and design by obsession.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hr"></div>
+
+  <section>
+    <h2>Notary Services</h2>
+    <div class="card">
+      <p>Commissioned <strong>Texas Notary Public</strong>, available by appointment for signings and notarizations in the Montgomery area.</p>
+      <p>Notary services are provided through Advisors Group International Inc — call or text <strong>(936) 448-5900</strong>, or use the form below.</p>
+      <span class="badge">By Appointment</span>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Get In Touch</h2>
+    <div class="card">
+      <form id="contact-form">
+        <div><label for="name">Full Name *</label><input id="name" name="name" required autocomplete="name"></div>
+        <div><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email"></div>
+        <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
+        <div><label for="reqtype">Reason</label>
+          <select id="reqtype" name="request_type"><option>Notary request</option><option>General inquiry</option></select></div>
+        <div><label for="message">Message *</label><textarea id="message" name="message" rows="4" required placeholder="For notary requests: document type, number of signers, preferred date/time…"></textarea></div>
+        <p class="fineprint">Information you submit is used only to respond to your request — see the <a href="/privacy.html">Privacy Policy</a> and <a href="/terms.html">Terms of Use</a>.</p>
+        <div><button type="submit">Send</button><div id="form-status" role="status"></div></div>
+      </form>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">&copy; 2026 Ryan Hasselmeier &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a></div>
+</footer>
+
+<script>
+const ENDPOINT = "PENDING_BRIDGE_URL";
+document.getElementById("contact-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const f = e.target, s = document.getElementById("form-status");
+  const data = Object.fromEntries(new FormData(f).entries());
+  data.business = "AGII"; data.source = "ryanhasselmeier.com";
+  if (!data.email && !data.phone) { s.textContent = "Please provide an email or phone number so I can reach you."; return; }
+  if (ENDPOINT.startsWith("PENDING")) { s.textContent = "The form is being connected — for notary requests, call or text (936) 448-5900."; return; }
+  try {
+    const r = await fetch(ENDPOINT, { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(data) });
+    if (!r.ok) throw 0;
+    f.reset(); s.textContent = "Thank you — message received.";
+  } catch { s.textContent = "Something went wrong — please call or text (936) 448-5900."; }
+});
+</script>
+</body>
+</html>

@@ -33,6 +33,7 @@
   footer { border-top:1px solid var(--line); padding:1.8rem 0 2.4rem; text-align:center; font-size:.8rem; color:#8a97a1; }
   footer a { color:var(--slate); }
 </style>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 <header>
@@ -66,6 +67,8 @@
           <select id="reqtype" name="request_type"><option>Notary request</option><option>General inquiry</option></select></div>
         <div><label for="message">Message *</label><textarea id="message" name="message" rows="4" required placeholder="For notary requests: document type, number of signers, preferred date/time…"></textarea></div>
         <p class="fineprint">Information you submit is used only to respond to your request — see the <a href="/privacy.html">Privacy Policy</a> and <a href="/terms.html">Terms of Use</a>.</p>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px">
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAD8MVIhSPLH80f6N" data-theme="auto"></div>
         <div><button type="submit">Send</button><div id="form-status" role="status"></div></div>
       </form>
     </div>

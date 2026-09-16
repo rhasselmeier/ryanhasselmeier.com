@@ -64,6 +64,38 @@
   onScrollHeader();
   window.addEventListener("scroll", onScrollHeader, { passive: true });
 
+  /* ---------- cinematic hero: desktop parallax (CSS Ken Burns is separate) ---------- */
+  var heroMedia = $("#hero-media");
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var parallaxTicking = false;
+
+  function updateParallax() {
+    parallaxTicking = false;
+    if (!heroMedia || !hero) return;
+    if (reduceMotion.matches) {
+      heroMedia.style.transform = "";
+      return;
+    }
+    if (window.matchMedia("(max-width: 767px)").matches) {
+      heroMedia.style.transform = "";
+      return;
+    }
+    var y = window.scrollY;
+    if (y > window.innerHeight) return;
+    heroMedia.style.transform = "translate3d(0," + Math.round(y * 0.18) + "px,0)";
+  }
+  function onParallaxScroll() {
+    if (parallaxTicking) return;
+    parallaxTicking = true;
+    window.requestAnimationFrame(updateParallax);
+  }
+  updateParallax();
+  window.addEventListener("scroll", onParallaxScroll, { passive: true });
+  window.addEventListener("resize", updateParallax);
+  if (typeof reduceMotion.addEventListener === "function") {
+    reduceMotion.addEventListener("change", updateParallax);
+  }
+
   /* ---------- cookie consent (gates non-essential scripts) ---------- */
   var banner = $("#cookie-banner");
   var acceptBtn = $("#cookie-accept");

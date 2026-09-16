@@ -3,27 +3,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Systems, agents and Texas notary | Ryan Hasselmeier</title>
-  <meta name="description" content="Ryan Hasselmeier lives in Montgomery, Texas. He builds businesses, tools, and multi-agent systems — and is a commissioned Texas Notary Public.">
+  <title>Ryan Hasselmeier | Husband. Father. Texan. American.</title>
+  <meta name="description" content="The personal website of Ryan Hasselmeier—a Texas husband, father, business owner, advisor, builder, and creator sharing his businesses, projects, and ideas.">
   <link rel="canonical" href="https://ryanhasselmeier.com/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Ryan Hasselmeier">
   <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="Systems, agents and Texas notary | Ryan Hasselmeier">
-  <meta property="og:description" content="Ryan Hasselmeier lives in Montgomery, Texas. He builds businesses, tools, and multi-agent systems — and is a commissioned Texas Notary Public.">
+  <meta property="og:title" content="Ryan Hasselmeier | Husband. Father. Texan. American.">
+  <meta property="og:description" content="Businesses, projects, ideas, and personal work from Ryan Hasselmeier in Montgomery, Texas.">
   <meta property="og:url" content="https://ryanhasselmeier.com/">
   <meta property="og:image" content="https://ryanhasselmeier.com/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Canyon country at dawn with the name Ryan Hasselmeier">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Systems, agents and Texas notary | Ryan Hasselmeier">
-  <meta name="twitter:description" content="Ryan Hasselmeier lives in Montgomery, Texas. He builds businesses, tools, and multi-agent systems — and is a commissioned Texas Notary Public.">
+  <meta name="twitter:title" content="Ryan Hasselmeier | Husband. Father. Texan. American.">
+  <meta name="twitter:description" content="Businesses, projects, ideas, and personal work from Ryan Hasselmeier in Montgomery, Texas.">
   <meta name="twitter:image" content="https://ryanhasselmeier.com/og.jpg">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="theme-color" content="#f3ece1">
+  <link rel="preload" as="image" type="image/webp" href="/images/hero-1600.webp"
+    imagesrcset="/images/hero-960.webp 960w, /images/hero-1600.webp 1600w, /images/hero-1728.webp 1728w"
+    imagesizes="100vw">
   <link rel="stylesheet" href="/css/site.css">
   <script type="application/ld+json">
   {
@@ -31,12 +34,11 @@
     "@type": "Person",
     "name": "Ryan Hasselmeier",
     "url": "https://ryanhasselmeier.com/",
+    "description": "Husband, father, Texan, and American. Business owner, advisor, builder, and creator in Montgomery, Texas.",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "43 Brookgreen Cir N",
       "addressLocality": "Montgomery",
       "addressRegion": "TX",
-      "postalCode": "77356",
       "addressCountry": "US"
     },
     "telephone": "+19364485900",
@@ -58,8 +60,8 @@
       <a class="brand" href="/">Ryan Hasselmeier</a>
       <nav class="nav" aria-label="Primary">
         <a href="#about">About</a>
-        <a href="#agents">Agents</a>
-        <a href="#work">Work</a>
+        <a href="#businesses">Businesses</a>
+        <a href="#projects">Projects</a>
         <a href="#notary">Notary</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -67,125 +69,176 @@
   </header>
 
   <section class="hero" id="hero">
-    <div class="hero-media">
-      <picture>
-        <source type="image/webp"
-          srcset="/images/hero-960.webp 960w, /images/hero-1600.webp 1600w, /images/hero-2400.webp 2400w"
-          sizes="100vw">
-        <source type="image/jpeg"
-          srcset="/images/hero-960.jpg 960w, /images/hero-1600.jpg 1600w, /images/hero-2400.jpg 2400w"
-          sizes="100vw">
-        <img src="/images/hero.jpg" alt="Layered canyon country at first light, receding into thin weather under a pale sky." width="1920" height="1080" fetchpriority="high" decoding="async">
-      </picture>
-    </div>
-    <div class="hero-scrim" aria-hidden="true"></div>
-    <div class="hero-inner">
-      <p class="hero-kicker">Montgomery · Texas</p>
-      <h1>Ryan Hasselmeier</h1>
-      <p class="hero-line">Texas. Systems. Design. Agents.</p>
-      <p class="hero-deck">I build the businesses, tools, and workflows I actually use — advisory work, media and apparel, travel goods, civic writing, and multi-agent AI systems.</p>
-      <div class="hero-actions">
-        <a class="btn btn-light" href="#contact">Get in touch</a>
-        <a class="btn btn-ghost" href="#notary" data-prefill-notary>Notary in Montgomery</a>
+    <!--
+      Hero media swap point.
+      Current still: existing Alaska landscape (stock stand-in until Ryan’s photo).
+      Later, replace the <picture> inside .hero-media-motion with a muted looping
+      <video class="hero-video" playsinline muted loop autoplay poster="/images/hero.jpg">
+        <source src="/videos/alaska.mp4" type="video/mp4">
+      </video>
+      CSS already covers video with object-fit: cover. Keep overlays as they are.
+    -->
+    <div class="hero-media" id="hero-media" data-hero-media>
+      <div class="hero-media-motion">
+        <picture>
+          <source type="image/webp"
+            srcset="/images/hero-960.webp 960w, /images/hero-1600.webp 1600w, /images/hero-1728.webp 1728w"
+            sizes="100vw">
+          <source type="image/jpeg"
+            srcset="/images/hero-960.jpg 960w, /images/hero-1600.jpg 1600w, /images/hero-1728.jpg 1728w"
+            sizes="100vw">
+          <img src="/images/hero.jpg" alt="Alaskan glacial valley with a braided river under snow peaks and a pale sky." width="1728" height="1152" fetchpriority="high" decoding="async">
+        </picture>
       </div>
     </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-haze" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="hero-kicker">Montgomery, Texas</p>
+      <h1>Ryan Hasselmeier</h1>
+      <p class="hero-line">Husband. Father. Texan. American.</p>
+      <p class="hero-deck">I’m a business owner, advisor, builder, and lifelong problem solver. This is where I share the businesses I operate, the projects I’m building, and the ideas I believe are worth pursuing.</p>
+      <div class="hero-actions">
+        <a class="btn btn-light" href="#businesses">See what I’m building</a>
+        <a class="btn btn-ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <a class="hero-scroll" href="#about" aria-label="Scroll to about">
+      <span aria-hidden="true"></span>
+    </a>
   </section>
 
   <main id="main">
-    <section class="section" id="about">
-      <div class="wrap">
+    <section class="section section-prose" id="about">
+      <div class="wrap-narrow">
         <h2>About</h2>
         <div class="stack">
-          <p>I live and work in Montgomery, Texas.</p>
-          <p>Background in tax and advisory, operations, and building small businesses. These days I spend most of my time on AI and agentic engineering. I still do local notary work by appointment.</p>
-          <p>I am drawn to big landscapes and to systems that hold up.</p>
+          <p>I’m Ryan Hasselmeier—a husband, father, native Texan, and proud American.</p>
+          <p>I’ve spent most of my career building and operating businesses, solving problems, and helping turn ideas into practical results. My work has crossed business advisory, technology, travel, media, custom products, and new ventures.</p>
+          <p>I tend to learn by building. That might mean improving a business process, developing a website, testing a new use for AI, designing a custom computer system, or creating a space-colony simulation game.</p>
+          <p>This site is a home for the businesses, projects, interests, and convictions that make up my work and life.</p>
         </div>
       </div>
     </section>
 
-    <section class="section" id="agents">
-      <div class="wrap">
-        <h2>Agents and systems</h2>
-        <div class="stack-lg">
-          <p class="lede">This is current work, not a hobby footnote. I design and run multi-agent workflows for real operations — not demos. The point is tools that reduce friction and actually ship.</p>
-          <p>Daily stack: SuperGrok and Grok Build / Grok Bot, Cursor, Claude and Claude Code, ChatGPT and Codex, Gemini, and Perplexity.</p>
-          <p>I treat Box as the document source of truth, with MCP connectors, skills, and session open/close. No secrets in public repos.</p>
-          <p>I also build voice and business agents with Vapi, alongside the coding agents.</p>
+    <section class="section section-prose" id="builder">
+      <div class="wrap-narrow">
+        <h2>Builder by nature</h2>
+        <div class="stack">
+          <p>I have always been drawn to complicated problems and new possibilities. I like taking an idea apart, understanding how it works, and turning it into something useful.</p>
+          <p>That instinct runs through nearly everything I do: advising businesses, developing digital products, exploring practical uses for AI, building computer systems, and creating Mission Galaxy. The subjects change, but the approach does not—I learn, build, test, and improve.</p>
+          <p>AI is part of that work, but it is a tool rather than the story. I’m most interested in where it can help people do better work, reduce unnecessary friction, and turn good ideas into finished results.</p>
         </div>
-        <ul class="toolkit" aria-label="Tools in daily use">
-          <li>SuperGrok</li>
-          <li>Grok Build / Grok Bot</li>
-          <li>Cursor</li>
-          <li>Claude</li>
-          <li>Claude Code</li>
-          <li>ChatGPT</li>
-          <li>Codex</li>
-          <li>Gemini</li>
-          <li>Perplexity</li>
-          <li>Box</li>
-          <li>MCP</li>
-          <li>Vapi</li>
-        </ul>
-        <a class="github-link" href="https://github.com/rhasselmeier" rel="noopener noreferrer">github.com/rhasselmeier</a>
       </div>
     </section>
 
-    <section class="section" id="work">
+    <section class="section" id="businesses">
       <div class="wrap">
         <div class="section-head">
-          <h2>In motion</h2>
+          <h2>Businesses</h2>
+          <p class="section-intro">I operate and develop several businesses across advisory services, technology, media, travel, and custom products.</p>
         </div>
-
-        <div class="work-block">
-          <p class="work-label">Building</p>
-          <div class="work-grid">
-            <a class="work-card" href="https://advisorsgroupintl.com" rel="noopener noreferrer">
-              <h3>Advisors Group International</h3>
-              <p>Tax, advisory, and notary.</p>
-              <span class="work-url">advisorsgroupintl.com</span>
-            </a>
-            <a class="work-card" href="https://town4mediagroup.com" rel="noopener noreferrer">
-              <h3>Town4 Media Group</h3>
-              <p>Design, web, and media.</p>
-              <span class="work-url">town4mediagroup.com</span>
-            </a>
-            <a class="work-card" href="https://travelshertz.com" rel="noopener noreferrer">
-              <h3>Travel Shertz</h3>
-              <p>Travel apparel.</p>
-              <span class="work-url">travelshertz.com</span>
-            </a>
-            <a class="work-card" href="https://thesouvenirsafari.com" rel="noopener noreferrer">
-              <h3>The Souvenir Safari</h3>
-              <p>Travel goods.</p>
-              <span class="work-url">thesouvenirsafari.com</span>
-            </a>
-            <a class="work-card" href="https://txshirtworks.com" rel="noopener noreferrer">
-              <h3>Texas Shirt Works</h3>
-              <p>Custom shirts and local print.</p>
-              <span class="work-url">txshirtworks.com</span>
-            </a>
-          </div>
+        <div class="work-grid">
+          <a class="work-card" href="https://advisorsgroupintl.com" rel="noopener noreferrer">
+            <h3>Advisors Group International</h3>
+            <p>Accounting, tax, business advisory, and notary services for individuals and small businesses.</p>
+            <span class="work-url">advisorsgroupintl.com</span>
+          </a>
+          <a class="work-card" href="https://town4mediagroup.com" rel="noopener noreferrer">
+            <h3>Town4 Media Group</h3>
+            <p>Websites, design, media, print-on-demand, and practical technology solutions for small businesses.</p>
+            <span class="work-url">town4mediagroup.com</span>
+          </a>
+          <a class="work-card" href="https://travelshertz.com" rel="noopener noreferrer">
+            <h3>Travel Shertz</h3>
+            <p>Original travel-themed apparel and goods for people who enjoy the journey as much as the destination.</p>
+            <span class="work-url">travelshertz.com</span>
+          </a>
+          <a class="work-card" href="https://thesouvenirsafari.com" rel="noopener noreferrer">
+            <h3>The Souvenir Safari</h3>
+            <p>Destination-inspired souvenirs, remembrances, and travel goods.</p>
+            <span class="work-url">thesouvenirsafari.com</span>
+          </a>
+          <a class="work-card" href="https://txshirtworks.com" rel="noopener noreferrer">
+            <h3>Texas Shirt Works</h3>
+            <p>Custom printed apparel for businesses, teams, events, and local organizations.</p>
+            <span class="work-url">txshirtworks.com</span>
+          </a>
+          <article class="work-card work-card--soon" aria-label="AGII Custom Systems, in development">
+            <h3>AGII Custom Systems</h3>
+            <p>Purpose-built computers and AI workstations configured around the customer’s actual needs.</p>
+            <span class="work-badge">In development</span>
+          </article>
         </div>
+      </div>
+    </section>
 
-        <div class="work-block">
-          <p class="work-label">Also working on</p>
-          <div class="work-grid">
-            <a class="work-card" href="https://missiongalaxy.com" rel="noopener noreferrer">
-              <h3>Mission Galaxy</h3>
-              <p>Indie space-colony simulation.</p>
-              <span class="work-url">missiongalaxy.com</span>
-            </a>
-            <a class="work-card" href="https://peacebeyond.org" rel="noopener noreferrer">
-              <h3>Peace Beyond</h3>
-              <p>2e ADHD inattentive tools; burnout and anhedonia recovery.</p>
-              <span class="work-url">peacebeyond.org</span>
-            </a>
-            <a class="work-card" href="https://texan4america.com" rel="noopener noreferrer">
-              <h3>Texan 4 America</h3>
-              <p>Texas and American civic writing.</p>
-              <span class="work-url">texan4america.com</span>
-            </a>
-          </div>
+    <section class="section" id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Projects</h2>
+          <p class="section-intro">Some ideas become businesses. Others begin as questions I cannot leave alone. These are the longer-term projects I’m developing.</p>
+        </div>
+        <div class="work-grid work-grid--projects">
+          <a class="work-card" href="https://missiongalaxy.com" rel="noopener noreferrer">
+            <h3>Mission Galaxy</h3>
+            <p>A modern space-colony simulation that grows from one settlement to a multi-colony, multiplanetary civilization.</p>
+            <span class="work-url">missiongalaxy.com</span>
+          </a>
+          <a class="work-card" href="https://peacebeyond.org" rel="noopener noreferrer">
+            <h3>Peace Beyond</h3>
+            <p>Writing and practical resources for twice-exceptional adults navigating inattentive ADHD, burnout, depleted motivation, and recovery.</p>
+            <span class="work-url">peacebeyond.org</span>
+          </a>
+          <a class="work-card" href="https://texan4america.com" rel="noopener noreferrer">
+            <h3>Texan 4 America</h3>
+            <p>Personal writing on faith, family, freedom, Texas, and America.</p>
+            <span class="work-url">texan4america.com</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="places">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Places that stay with me</h2>
+          <p class="section-intro">I enjoy travel, especially places that remind you how big the world is. Alaska, Hawaiʻi, and the canyon country of the American West are a few that have stayed with me.</p>
+        </div>
+        <div class="field-grid">
+          <article class="field-card" data-place="alaska">
+            <div class="field-media">
+              <picture>
+                <source type="image/webp" srcset="/images/field-alaska-800.webp 800w, /images/field-alaska-1200.webp 1200w" sizes="(max-width: 767px) 100vw, 33vw">
+                <source type="image/jpeg" srcset="/images/field-alaska-800.jpg 800w, /images/field-alaska-1200.jpg 1200w" sizes="(max-width: 767px) 100vw, 33vw">
+                <img src="/images/field-alaska.jpg" alt="Alaskan glacial valley at blue hour, a braided river under distant snow peaks." width="1400" height="933" loading="lazy" decoding="async">
+              </picture>
+              <!-- Future: personal Alaska photograph or a short muted travel video. -->
+            </div>
+            <p class="field-caption">Alaska</p>
+          </article>
+          <article class="field-card" data-place="hawaii">
+            <div class="field-media">
+              <picture>
+                <source type="image/webp" srcset="/images/field-hawaii-800.webp 800w, /images/field-hawaii-1200.webp 1200w" sizes="(max-width: 767px) 100vw, 33vw">
+                <source type="image/jpeg" srcset="/images/field-hawaii-800.jpg 800w, /images/field-hawaii-1200.jpg 1200w" sizes="(max-width: 767px) 100vw, 33vw">
+                <img src="/images/field-hawaii.jpg" alt="Hawaiian volcanic coastline at dusk, dark lava meeting a pale ocean." width="1400" height="933" loading="lazy" decoding="async">
+              </picture>
+              <!-- Future: personal Hawaiʻi photograph or a short muted travel video. -->
+            </div>
+            <p class="field-caption">Hawaiʻi</p>
+          </article>
+          <article class="field-card" data-place="american-west">
+            <div class="field-media">
+              <picture>
+                <source type="image/webp" srcset="/images/field-canyon-800.webp 800w, /images/field-canyon-1200.webp 1200w" sizes="(max-width: 767px) 100vw, 33vw">
+                <source type="image/jpeg" srcset="/images/field-canyon-800.jpg 800w, /images/field-canyon-1200.jpg 1200w" sizes="(max-width: 767px) 100vw, 33vw">
+                <img src="/images/field-canyon.jpg" alt="Grand Canyon rim in late afternoon, layered red stone receding into haze." width="1400" height="933" loading="lazy" decoding="async">
+              </picture>
+              <!-- Future: personal American West photograph or a short muted travel video. -->
+            </div>
+            <p class="field-caption">The American West</p>
+          </article>
         </div>
       </div>
     </section>
@@ -197,46 +250,12 @@
             <p class="eyebrow">By appointment</p>
             <h2>Texas Notary Public</h2>
           </div>
-          <p class="notary-note">Commissioned Texas Notary Public. Signings and notarizations by appointment in the Montgomery area. Services through Advisors Group International Inc.</p>
-          <a class="notary-phone" href="tel:+19364485900">(936) 448-5900</a>
+          <p class="notary-note">Need a notary in the Montgomery area? I provide signings and notarizations by appointment through Advisors Group International Inc.</p>
+          <p class="notary-note">Call or text (936) 448-5900 or use the contact form to request an appointment.</p>
           <div class="notary-actions">
-            <a class="btn btn-accent" href="#contact" data-prefill-notary>Request an appointment</a>
-            <span>Phone or text. Same number.</span>
+            <a class="btn btn-accent" href="tel:+19364485900">Call or text</a>
+            <a class="btn btn-ink" href="#contact" data-prefill-notary>Request an appointment</a>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="field-notes">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Field notes</h2>
-        </div>
-        <div class="field-grid">
-          <article class="field-card">
-            <picture>
-              <source type="image/webp" srcset="/images/field-alaska-800.webp 800w, /images/field-alaska-1200.webp 1200w" sizes="(max-width: 767px) 100vw, 33vw">
-              <source type="image/jpeg" srcset="/images/field-alaska-800.jpg 800w, /images/field-alaska-1200.jpg 1200w" sizes="(max-width: 767px) 100vw, 33vw">
-              <img src="/images/field-alaska.jpg" alt="Alaskan glacial valley at blue hour, a braided river under distant snow peaks." width="1400" height="933" loading="lazy" decoding="async">
-            </picture>
-            <p class="field-caption">Interior Alaska. Weather over a long valley.</p>
-          </article>
-          <article class="field-card">
-            <picture>
-              <source type="image/webp" srcset="/images/field-hawaii-800.webp 800w, /images/field-hawaii-1200.webp 1200w" sizes="(max-width: 767px) 100vw, 33vw">
-              <source type="image/jpeg" srcset="/images/field-hawaii-800.jpg 800w, /images/field-hawaii-1200.jpg 1200w" sizes="(max-width: 767px) 100vw, 33vw">
-              <img src="/images/field-hawaii.jpg" alt="Hawaiian volcanic coastline at dusk, dark lava meeting a pale ocean." width="1400" height="933" loading="lazy" decoding="async">
-            </picture>
-            <p class="field-caption">Hawaiʻi. Lava meeting open water.</p>
-          </article>
-          <article class="field-card">
-            <picture>
-              <source type="image/webp" srcset="/images/field-canyon-800.webp 800w, /images/field-canyon-1200.webp 1200w" sizes="(max-width: 767px) 100vw, 33vw">
-              <source type="image/jpeg" srcset="/images/field-canyon-800.jpg 800w, /images/field-canyon-1200.jpg 1200w" sizes="(max-width: 767px) 100vw, 33vw">
-              <img src="/images/field-canyon.jpg" alt="Grand Canyon rim in late afternoon, layered red stone receding into haze." width="1400" height="933" loading="lazy" decoding="async">
-            </picture>
-            <p class="field-caption">Canyon country. Distance doing the work.</p>
-          </article>
         </div>
       </div>
     </section>
@@ -245,8 +264,8 @@
       <div class="wrap">
         <div class="contact-grid">
           <div>
-            <h2>Contact</h2>
-            <p class="lede contact-intro">Name, a way to reach you, and what you need. I will follow up.</p>
+            <h2>Get in touch</h2>
+            <p class="lede contact-intro">Have a question, a project, or something worth discussing? Send your name, the best way to reach you, and a short note. I’ll follow up.</p>
 
             <form id="contact-form" novalidate>
               <div class="stack">
@@ -316,7 +335,7 @@
             <div class="contact-vcard">
               <p><strong>Ryan Hasselmeier</strong></p>
               <p>Advisors Group International Inc</p>
-              <p>43 Brookgreen Cir N<br>Montgomery, TX 77356</p>
+              <p>Montgomery, Texas</p>
               <p><a href="tel:+19364485900">(936) 448-5900</a></p>
             </div>
             <ul class="social-list">

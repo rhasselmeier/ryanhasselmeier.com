@@ -49,3 +49,18 @@ GitHub Pages cannot set them. Cloudflare can. `_headers` is included for Cloudfl
 ## Local
 
 Serve the repo root as a static site (pretty URLs, real 404). Any static server that maps `/privacy/` → `privacy/index.html` will do.
+
+## Hero and travel media (future replacements)
+
+The homepage hero is structured so the background can be swapped without a layout rewrite.
+
+- Current still: existing Alaska landscape in `images/hero.jpg` (plus `hero-960`, `hero-1600`, `hero-1728` JPEG/WebP).
+- Swap point: the `<picture>` inside `.hero-media-motion` in `index.html`.
+- Later photograph: drop Ryan’s Alaska still into those filenames (keep the srcset widths) or add new names and update the `srcset`.
+- Later video: replace the `<picture>` with a muted looping `<video class="hero-video" playsinline muted loop autoplay poster="/images/hero.jpg">`. CSS already covers `object-fit: cover`. Honor `prefers-reduced-motion` by leaving the still in place.
+
+Travel cards in `#places` (`data-place="alaska"`, `hawaii`, `american-west`) can take personal stills or short muted videos later. Do not add autoplay video until those files exist. Optional location notes and reflections can go under each `.field-caption`.
+
+`og.jpg` is still the canyon composite (1200×630). Replace it with an Alaska frame once a personal photograph is ready. Until then, leave it so social previews do not break.
+
+Canyon stills used on the old hero are archived under `images/archive/` and are not linked.

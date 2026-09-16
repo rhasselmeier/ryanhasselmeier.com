@@ -1,99 +1,366 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ryan Hasselmeier — Montgomery, Texas</title>
-<meta name="description" content="Ryan Hasselmeier — advisor, builder, and Texas Notary Public based in Montgomery, Texas.">
-<style>
-  :root { --ink:#22303c; --slate:#6f8ba4; --paper:#fcfcfa; --line:#e3e6e8; }
-  * { box-sizing:border-box; margin:0; }
-  body { font-family:'Segoe UI', system-ui, sans-serif; background:var(--paper); color:var(--ink); line-height:1.7; }
-  .wrap { max-width:680px; margin:0 auto; padding:0 1.5rem; }
-  header { padding:5.5rem 0 3rem; text-align:center; }
-  .mono { font-family:Consolas, monospace; color:var(--slate); font-size:.85rem; letter-spacing:.18em; text-transform:uppercase; }
-  h1 { font-size:clamp(2rem,5vw,2.8rem); font-weight:650; letter-spacing:-.01em; margin:.6rem 0; }
-  .tagline { color:#4a5c6b; font-size:1.08rem; max-width:520px; margin:0 auto; }
-  .hr { width:48px; height:2px; background:var(--slate); margin:2.2rem auto; }
-  section { padding:1.2rem 0 2.4rem; }
-  h2 { font-size:.85rem; letter-spacing:.18em; text-transform:uppercase; color:var(--slate); text-align:center; margin-bottom:1.1rem; }
-  .card { background:#fff; border:1px solid var(--line); border-radius:10px; padding:1.5rem 1.6rem; }
-  .card p { color:#4a5c6b; font-size:.97rem; }
-  .card p + p { margin-top:.7rem; }
-  .badge { display:inline-block; font-size:.75rem; letter-spacing:.1em; text-transform:uppercase; color:var(--slate); border:1px solid var(--line); border-radius:999px; padding:.25rem .8rem; margin-top:.9rem; }
-  form { display:grid; gap:.9rem; margin-top:1.2rem; }
-  label { font-size:.83rem; font-weight:600; }
-  input, select, textarea { width:100%; padding:.7rem; border:1px solid #cfd6db; border-radius:7px; background:#fff; font:inherit; font-size:.95rem; }
-  input:focus, select:focus, textarea:focus { outline:2px solid var(--slate); }
-  .fineprint { font-size:.78rem; color:#7c8b96; line-height:1.5; }
-  .fineprint a { color:var(--slate); }
-  button { background:var(--ink); color:#fff; font-weight:600; padding:.8rem 1.6rem; border:0; border-radius:7px; cursor:pointer; }
-  button:hover { background:#33475a; }
-  #form-status { font-size:.9rem; margin-top:.4rem; color:var(--slate); }
-  footer { border-top:1px solid var(--line); padding:1.8rem 0 2.4rem; text-align:center; font-size:.8rem; color:#8a97a1; }
-  footer a { color:var(--slate); }
-</style>
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Systems, agents and Texas notary | Ryan Hasselmeier</title>
+  <meta name="description" content="Ryan Hasselmeier lives in Montgomery, Texas. He builds businesses, tools, and multi-agent systems — and is a commissioned Texas Notary Public.">
+  <link rel="canonical" href="https://ryanhasselmeier.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ryan Hasselmeier">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Systems, agents and Texas notary | Ryan Hasselmeier">
+  <meta property="og:description" content="Ryan Hasselmeier lives in Montgomery, Texas. He builds businesses, tools, and multi-agent systems — and is a commissioned Texas Notary Public.">
+  <meta property="og:url" content="https://ryanhasselmeier.com/">
+  <meta property="og:image" content="https://ryanhasselmeier.com/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Canyon country at dawn with the name Ryan Hasselmeier">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Systems, agents and Texas notary | Ryan Hasselmeier">
+  <meta name="twitter:description" content="Ryan Hasselmeier lives in Montgomery, Texas. He builds businesses, tools, and multi-agent systems — and is a commissioned Texas Notary Public.">
+  <meta name="twitter:image" content="https://ryanhasselmeier.com/og.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#f3ece1">
+  <link rel="stylesheet" href="/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ryan Hasselmeier",
+    "url": "https://ryanhasselmeier.com/",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "43 Brookgreen Cir N",
+      "addressLocality": "Montgomery",
+      "addressRegion": "TX",
+      "postalCode": "77356",
+      "addressCountry": "US"
+    },
+    "telephone": "+19364485900",
+    "sameAs": [
+      "https://x.com/rhasselmeier",
+      "https://www.linkedin.com/in/ryanhasselmeier",
+      "https://github.com/rhasselmeier"
+    ]
+  }
+  </script>
+  <!-- Turnstile script is injected from js/site.js (prod site key on ryanhasselmeier.com; dummy key on preview). -->
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <div class="mono">Montgomery &middot; Texas</div>
-    <h1>Ryan Hasselmeier</h1>
-    <p class="tagline">Advisor and builder — accounting and tax by trade, systems and design by obsession.</p>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="offline-note" class="offline-note" hidden role="status"></div>
+
+  <header class="site-header site-header--overlay">
+    <div class="header-inner">
+      <a class="brand" href="/">Ryan Hasselmeier</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#agents">Agents</a>
+        <a href="#work">Work</a>
+        <a href="#notary">Notary</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="hero">
+    <div class="hero-media">
+      <picture>
+        <source type="image/webp"
+          srcset="/images/hero-960.webp 960w, /images/hero-1600.webp 1600w, /images/hero-2400.webp 2400w"
+          sizes="100vw">
+        <source type="image/jpeg"
+          srcset="/images/hero-960.jpg 960w, /images/hero-1600.jpg 1600w, /images/hero-2400.jpg 2400w"
+          sizes="100vw">
+        <img src="/images/hero.jpg" alt="Layered canyon country at first light, receding into thin weather under a pale sky." width="1920" height="1080" fetchpriority="high" decoding="async">
+      </picture>
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="hero-kicker">Montgomery · Texas</p>
+      <h1>Ryan Hasselmeier</h1>
+      <p class="hero-line">Texas. Systems. Design. Agents.</p>
+      <p class="hero-deck">I build the businesses, tools, and workflows I actually use — advisory work, media and apparel, travel goods, civic writing, and multi-agent AI systems.</p>
+      <div class="hero-actions">
+        <a class="btn btn-light" href="#contact">Get in touch</a>
+        <a class="btn btn-ghost" href="#notary" data-prefill-notary>Notary in Montgomery</a>
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+    <section class="section" id="about">
+      <div class="wrap">
+        <h2>About</h2>
+        <div class="stack">
+          <p>I live and work in Montgomery, Texas.</p>
+          <p>Background in tax and advisory, operations, and building small businesses. These days I spend most of my time on AI and agentic engineering. I still do local notary work by appointment.</p>
+          <p>I am drawn to big landscapes and to systems that hold up.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="agents">
+      <div class="wrap">
+        <h2>Agents and systems</h2>
+        <div class="stack-lg">
+          <p class="lede">This is current work, not a hobby footnote. I design and run multi-agent workflows for real operations — not demos. The point is tools that reduce friction and actually ship.</p>
+          <p>Daily stack: SuperGrok and Grok Build / Grok Bot, Cursor, Claude and Claude Code, ChatGPT and Codex, Gemini, and Perplexity.</p>
+          <p>I treat Box as the document source of truth, with MCP connectors, skills, and session open/close. No secrets in public repos.</p>
+          <p>I also build voice and business agents with Vapi, alongside the coding agents.</p>
+        </div>
+        <ul class="toolkit" aria-label="Tools in daily use">
+          <li>SuperGrok</li>
+          <li>Grok Build / Grok Bot</li>
+          <li>Cursor</li>
+          <li>Claude</li>
+          <li>Claude Code</li>
+          <li>ChatGPT</li>
+          <li>Codex</li>
+          <li>Gemini</li>
+          <li>Perplexity</li>
+          <li>Box</li>
+          <li>MCP</li>
+          <li>Vapi</li>
+        </ul>
+        <a class="github-link" href="https://github.com/rhasselmeier" rel="noopener noreferrer">github.com/rhasselmeier</a>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>In motion</h2>
+        </div>
+
+        <div class="work-block">
+          <p class="work-label">Building</p>
+          <div class="work-grid">
+            <a class="work-card" href="https://advisorsgroupintl.com" rel="noopener noreferrer">
+              <h3>Advisors Group International</h3>
+              <p>Tax, advisory, and notary.</p>
+              <span class="work-url">advisorsgroupintl.com</span>
+            </a>
+            <a class="work-card" href="https://town4mediagroup.com" rel="noopener noreferrer">
+              <h3>Town4 Media Group</h3>
+              <p>Design, web, and media.</p>
+              <span class="work-url">town4mediagroup.com</span>
+            </a>
+            <a class="work-card" href="https://travelshertz.com" rel="noopener noreferrer">
+              <h3>Travel Shertz</h3>
+              <p>Travel apparel.</p>
+              <span class="work-url">travelshertz.com</span>
+            </a>
+            <a class="work-card" href="https://thesouvenirsafari.com" rel="noopener noreferrer">
+              <h3>The Souvenir Safari</h3>
+              <p>Travel goods.</p>
+              <span class="work-url">thesouvenirsafari.com</span>
+            </a>
+            <a class="work-card" href="https://txshirtworks.com" rel="noopener noreferrer">
+              <h3>Texas Shirt Works</h3>
+              <p>Custom shirts and local print.</p>
+              <span class="work-url">txshirtworks.com</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="work-block">
+          <p class="work-label">Also working on</p>
+          <div class="work-grid">
+            <a class="work-card" href="https://missiongalaxy.com" rel="noopener noreferrer">
+              <h3>Mission Galaxy</h3>
+              <p>Indie space-colony simulation.</p>
+              <span class="work-url">missiongalaxy.com</span>
+            </a>
+            <a class="work-card" href="https://peacebeyond.org" rel="noopener noreferrer">
+              <h3>Peace Beyond</h3>
+              <p>2e ADHD inattentive tools; burnout and anhedonia recovery.</p>
+              <span class="work-url">peacebeyond.org</span>
+            </a>
+            <a class="work-card" href="https://texan4america.com" rel="noopener noreferrer">
+              <h3>Texan 4 America</h3>
+              <p>Texas and American civic writing.</p>
+              <span class="work-url">texan4america.com</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="notary">
+      <div class="wrap">
+        <div class="notary-panel">
+          <div>
+            <p class="eyebrow">By appointment</p>
+            <h2>Texas Notary Public</h2>
+          </div>
+          <p class="notary-note">Commissioned Texas Notary Public. Signings and notarizations by appointment in the Montgomery area. Services through Advisors Group International Inc.</p>
+          <a class="notary-phone" href="tel:+19364485900">(936) 448-5900</a>
+          <div class="notary-actions">
+            <a class="btn btn-accent" href="#contact" data-prefill-notary>Request an appointment</a>
+            <span>Phone or text. Same number.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="field-notes">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Field notes</h2>
+        </div>
+        <div class="field-grid">
+          <article class="field-card">
+            <picture>
+              <source type="image/webp" srcset="/images/field-alaska-800.webp 800w, /images/field-alaska-1200.webp 1200w" sizes="(max-width: 767px) 100vw, 33vw">
+              <source type="image/jpeg" srcset="/images/field-alaska-800.jpg 800w, /images/field-alaska-1200.jpg 1200w" sizes="(max-width: 767px) 100vw, 33vw">
+              <img src="/images/field-alaska.jpg" alt="Alaskan glacial valley at blue hour, a braided river under distant snow peaks." width="1400" height="933" loading="lazy" decoding="async">
+            </picture>
+            <p class="field-caption">Interior Alaska. Weather over a long valley.</p>
+          </article>
+          <article class="field-card">
+            <picture>
+              <source type="image/webp" srcset="/images/field-hawaii-800.webp 800w, /images/field-hawaii-1200.webp 1200w" sizes="(max-width: 767px) 100vw, 33vw">
+              <source type="image/jpeg" srcset="/images/field-hawaii-800.jpg 800w, /images/field-hawaii-1200.jpg 1200w" sizes="(max-width: 767px) 100vw, 33vw">
+              <img src="/images/field-hawaii.jpg" alt="Hawaiian volcanic coastline at dusk, dark lava meeting a pale ocean." width="1400" height="933" loading="lazy" decoding="async">
+            </picture>
+            <p class="field-caption">Hawaiʻi. Lava meeting open water.</p>
+          </article>
+          <article class="field-card">
+            <picture>
+              <source type="image/webp" srcset="/images/field-canyon-800.webp 800w, /images/field-canyon-1200.webp 1200w" sizes="(max-width: 767px) 100vw, 33vw">
+              <source type="image/jpeg" srcset="/images/field-canyon-800.jpg 800w, /images/field-canyon-1200.jpg 1200w" sizes="(max-width: 767px) 100vw, 33vw">
+              <img src="/images/field-canyon.jpg" alt="Grand Canyon rim in late afternoon, layered red stone receding into haze." width="1400" height="933" loading="lazy" decoding="async">
+            </picture>
+            <p class="field-caption">Canyon country. Distance doing the work.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="wrap">
+        <div class="contact-grid">
+          <div>
+            <h2>Contact</h2>
+            <p class="lede contact-intro">Name, a way to reach you, and what you need. I will follow up.</p>
+
+            <form id="contact-form" novalidate>
+              <div class="stack">
+                <div class="field">
+                  <label for="name">Name <span class="req" aria-hidden="true">*</span></label>
+                  <input id="name" name="name" autocomplete="name" required>
+                  <p class="field-error" id="name-error" role="alert"></p>
+                </div>
+                <div class="field">
+                  <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+                  <input id="email" name="email" type="email" autocomplete="email" required>
+                  <p class="field-error" id="email-error" role="alert"></p>
+                </div>
+                <div class="field">
+                  <label for="phone">Phone</label>
+                  <input id="phone" name="phone" type="tel" autocomplete="tel">
+                  <p class="field-error" id="phone-error" role="alert"></p>
+                </div>
+                <div class="field">
+                  <label for="reason">Reason <span class="req" aria-hidden="true">*</span></label>
+                  <select id="reason" name="request_type" required>
+                    <option value="">Choose a reason</option>
+                    <option value="Notary">Notary</option>
+                    <option value="Advisory">Advisory</option>
+                    <option value="Design & apparel">Design & apparel</option>
+                    <option value="AI & agents">AI & agents</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <p class="field-error" id="reason-error" role="alert"></p>
+                </div>
+                <div class="field">
+                  <label for="message">Message <span class="req" aria-hidden="true">*</span></label>
+                  <textarea id="message" name="message" rows="5" required placeholder="For notary requests: document type, number of signers, preferred date and time."></textarea>
+                  <p class="field-error" id="message-error" role="alert"></p>
+                </div>
+
+                <div class="field">
+                  <label class="consent" for="pii-consent">
+                    <input id="pii-consent" name="pii_consent" type="checkbox" required>
+                    <span>I understand this information will be used to respond to my request. See the <a href="/privacy/">Privacy Policy</a>.</span>
+                  </label>
+                  <p class="field-error" id="consent-error" role="alert"></p>
+                </div>
+
+                <div class="honeypot" aria-hidden="true">
+                  <label for="website">Website</label>
+                  <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+                </div>
+
+                <!-- Cloudflare Turnstile. Site key is public. Secret stays on the form backend. -->
+                <div class="turnstile-slot">
+                  <div class="cf-turnstile" data-theme="light"></div>
+                </div>
+
+                <div>
+                  <button class="btn btn-ink" type="submit" id="submit-btn">
+                    <span class="btn-label">Send message</span>
+                    <span class="btn-loading" hidden>Sending…</span>
+                  </button>
+                  <p class="form-status" id="form-status" role="status"></p>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <aside class="contact-aside">
+            <div class="contact-vcard">
+              <p><strong>Ryan Hasselmeier</strong></p>
+              <p>Advisors Group International Inc</p>
+              <p>43 Brookgreen Cir N<br>Montgomery, TX 77356</p>
+              <p><a href="tel:+19364485900">(936) 448-5900</a></p>
+            </div>
+            <ul class="social-list">
+              <li><a href="https://x.com/rhasselmeier" rel="noopener noreferrer">X / @rhasselmeier</a></li>
+              <li><a href="https://www.linkedin.com/in/ryanhasselmeier" rel="noopener noreferrer">LinkedIn</a></li>
+              <li><a href="https://github.com/rhasselmeier" rel="noopener noreferrer">GitHub</a></li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© Ryan Hasselmeier · Montgomery, Texas</p>
+      <nav class="footer-legal" aria-label="Legal">
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="#contact">Contact</a>
+        <button type="button" data-cookie-settings>Cookie settings</button>
+      </nav>
+    </div>
+  </footer>
+
+  <div id="sticky-cta" class="sticky-cta">
+    <a class="sticky-phone" href="tel:+19364485900">(936) 448-5900</a>
+    <a class="btn" href="#contact" data-prefill-notary>Request an appointment</a>
   </div>
-</header>
 
-<div class="wrap">
-  <div class="hr"></div>
-
-  <section>
-    <h2>Notary Services</h2>
-    <div class="card">
-      <p>Commissioned <strong>Texas Notary Public</strong>, available by appointment for signings and notarizations in the Montgomery area.</p>
-      <p>Notary services are provided through Advisors Group International Inc — call or text <strong>(936) 448-5900</strong>, or use the form below.</p>
-      <span class="badge">By Appointment</span>
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-desc" hidden>
+    <div class="cookie-inner">
+      <div class="cookie-copy">
+        <p id="cookie-title"><strong>Cookies</strong></p>
+        <p id="cookie-desc">This site can use analytics to understand visits. Security tools and form delivery always run. See the <a href="/privacy/">Privacy Policy</a>.</p>
+      </div>
+      <div class="cookie-actions">
+        <button type="button" class="btn btn-light" id="cookie-accept">Accept</button>
+        <button type="button" class="btn btn-ghost" id="cookie-reject">Reject</button>
+      </div>
     </div>
-  </section>
+  </div>
 
-  <section id="contact">
-    <h2>Get In Touch</h2>
-    <div class="card">
-      <form id="contact-form">
-        <div><label for="name">Full Name *</label><input id="name" name="name" required autocomplete="name"></div>
-        <div><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email"></div>
-        <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
-        <div><label for="reqtype">Reason</label>
-          <select id="reqtype" name="request_type"><option>Notary request</option><option>General inquiry</option></select></div>
-        <div><label for="message">Message *</label><textarea id="message" name="message" rows="4" required placeholder="For notary requests: document type, number of signers, preferred date/time…"></textarea></div>
-        <p class="fineprint">Information you submit is used only to respond to your request — see the <a href="/privacy.html">Privacy Policy</a> and <a href="/terms.html">Terms of Use</a>.</p>
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px">
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAAD8MVIhSPLH80f6N" data-theme="auto"></div>
-        <div><button type="submit">Send</button><div id="form-status" role="status"></div></div>
-      </form>
-    </div>
-  </section>
-</div>
-
-<footer>
-  <div class="wrap">&copy; 2026 Ryan Hasselmeier &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a></div>
-</footer>
-
-<script>
-const ENDPOINT = "https://agii-vapi-bridge-9383.twil.io/web-contact";
-document.getElementById("contact-form").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const f = e.target, s = document.getElementById("form-status");
-  const data = Object.fromEntries(new FormData(f).entries());
-  data.business = "AGII"; data.source = "ryanhasselmeier.com";
-  if (!data.email && !data.phone) { s.textContent = "Please provide an email or phone number so I can reach you."; return; }
-  if (ENDPOINT.startsWith("PENDING")) { s.textContent = "The form is being connected — for notary requests, call or text (936) 448-5900."; return; }
-  try {
-    const r = await fetch(ENDPOINT, { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(data) });
-    if (!r.ok) throw 0;
-    f.reset(); s.textContent = "Thank you — message received.";
-  } catch { s.textContent = "Something went wrong — please call or text (936) 448-5900."; }
-});
-</script>
+  <script src="/js/config.js"></script>
+  <script src="/js/site.js"></script>
 </body>
 </html>

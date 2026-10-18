@@ -33,20 +33,62 @@
   }
 
   /* Turnstile: production site key on the real host; Cloudflare dummy
-     always-pass key everywhere else so preview/localhost does not 400. */
+     always-pass key everywhere else so preview/localhost does not 400.
+     Send stays disabled until the widget's success callback; if the script
+     never loads, re-enable so the empty-token check can show a message. */
   var turnstileWidget = document.querySelector(".cf-turnstile");
+  var turnstileReady = !turnstileWidget;
+  var submitting = false;
+
+  function syncSubmitEnabled() {
+    var btn = document.getElementById("submit-btn");
+    if (!btn) return;
+    btn.disabled = submitting || (Boolean(turnstileWidget) && !turnstileReady);
+  }
+
+  function resetTurnstile() {
+    if (window.turnstile && typeof window.turnstile.reset === "function") {
+      try { window.turnstile.reset(); } catch (e) { /* widget may not be ready */ }
+    }
+    turnstileReady = !turnstileWidget;
+    syncSubmitEnabled();
+  }
+
+  window.onTurnstileSuccess = function () {
+    turnstileReady = true;
+    syncSubmitEnabled();
+  };
+  window.onTurnstileExpired = function () {
+    turnstileReady = false;
+    syncSubmitEnabled();
+  };
+  window.onTurnstileError = function () {
+    turnstileReady = false;
+    syncSubmitEnabled();
+  };
+
   if (turnstileWidget) {
     var sitekey = isProdHost()
       ? (cfg.TURNSTILE_SITEKEY || "")
       : "1x00000000000000000000AA";
     if (sitekey) {
       turnstileWidget.setAttribute("data-sitekey", sitekey);
+      turnstileWidget.setAttribute("data-callback", "onTurnstileSuccess");
+      turnstileWidget.setAttribute("data-expired-callback", "onTurnstileExpired");
+      turnstileWidget.setAttribute("data-error-callback", "onTurnstileError");
       var ts = document.createElement("script");
       ts.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
       ts.async = true;
       ts.defer = true;
+      ts.onerror = function () {
+        turnstileReady = true;
+        syncSubmitEnabled();
+      };
       document.head.appendChild(ts);
+    } else {
+      turnstileReady = true;
     }
+    syncSubmitEnabled();
   }
 
   /* ---------- header scroll state ---------- */
@@ -302,8 +344,9 @@
   }
 
   function setLoading(on) {
+    submitting = on;
+    syncSubmitEnabled();
     if (!submitBtn) return;
-    submitBtn.disabled = on;
     var label = submitBtn.querySelector(".btn-label");
     var loading = submitBtn.querySelector(".btn-loading");
     if (label) label.hidden = on;
@@ -312,6 +355,7 @@
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
+    if (submitting) return;
     if (!validate()) return;
 
     var hp = form.querySelector("[name='website']");
@@ -361,9 +405,11 @@
 
     req.then(function (res) {
       if (!res.ok) throw new Error("bad-status");
+      resetTurnstile();
       window.location.replace("/thank-you/");
     }).catch(function () {
       setLoading(false);
+      resetTurnstile();
       setStatus("The message did not go through. Call or text (936) 448-5900.", "error");
     });
   });

@@ -317,11 +317,14 @@
 
                 <!-- Cloudflare Turnstile. Site key is public. Secret stays on the form backend. -->
                 <div class="turnstile-slot">
-                  <div class="cf-turnstile" data-theme="light"></div>
+                  <div class="cf-turnstile" data-theme="light"
+                    data-callback="onTurnstileSuccess"
+                    data-expired-callback="onTurnstileExpired"
+                    data-error-callback="onTurnstileError"></div>
                 </div>
 
                 <div>
-                  <button class="btn btn-ink" type="submit" id="submit-btn">
+                  <button class="btn btn-ink" type="submit" id="submit-btn" disabled>
                     <span class="btn-label">Send message</span>
                     <span class="btn-loading" hidden>Sending…</span>
                   </button>
